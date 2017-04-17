@@ -1,0 +1,1 @@
+define("pages/question",function(e){e("wechat")});

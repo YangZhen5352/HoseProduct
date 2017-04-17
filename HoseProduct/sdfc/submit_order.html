@@ -1,0 +1,216 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>神灯房产</title>
+<script>
+	window.slog = function(msg, filename, lineno) {
+	setTimeout(function() {
+		try {
+			var data = {};
+			if (typeof msg !== 'object') {
+				data.msg = msg;
+				data.file = filename;
+				data.lineno = lineno;
+			} else {
+				data.msg = msg.message;
+				data.file = msg.filename;
+				data.lineno = msg.lineno;
+				data.colno = msg.colno || '';
+				data.stack = msg.error && msg.error.stack.toString() || '';
+			}
+			data.date = Date.now();
+			data.route = window.location.href;
+			data.ua = navigator.userAgent;
+			if(!data.file || file == 'undefined'){
+				//找不到文件的情况
+				return;
+			}
+			if(data.file == data.route){
+				//根本没有在模板中写过js
+				return;
+			}
+			var info = encodeURIComponent(JSON.stringify(data));
+			var img = new Image();
+			img.onload = img.onerror = function() {
+				img = null;
+			};
+			img.src = '/api/jsexception?msg='+ info;
+		} catch(e) {
+		}
+	}, 0);
+};
+
+window.addEventListener('error', slog);
+</script>
+
+<link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+<link type="text/css" rel="stylesheet" href="apply_0c01d57.css">
+<script>
+function jssdk() {
+	return {
+		appId:'wx53d4d01962f51f97',
+		timestamp:1488504353,
+		nonceStr:'c31ba94fb2d9fdbd33629f34d4ce0a9d',
+		signature:'697e846e69ac348f4fea2f6b907304d079f189b7'
+	};
+}
+var name = '哎呀';
+var M_TOKEN = 'lankG0/1yBrLtk4bbqRnoS1B9dqiyxoRG2CqCI2n5Mw=';
+var reqFlowNo = '';
+</script>
+</head>
+<body class="applyWrap">
+	
+	<div class="apy_tab" id="apy_tab1" style="display: block;">	
+		<div class="apy_top">
+			<p class="title">填写贷款信息</p>
+			<div class="process">
+				<div class="process_bar"></div>
+				<ul class="bar_ul">
+					<li class="bar_li cur cur2"><i></i><br><span class="txt">贷款信息</span></li>
+					<li class="bar_li"><i></i><br><span class="txt">房产证照片</span></li>
+					<!-- <li class="bar_li"><i></i><br><span class="txt">身份证照片</span></li> -->
+				</ul>
+			</div>
+		</div>
+		<ul class="apy_list">
+			<li class="item"><label class="item_l">借款人姓名</label><span class="ipt_w"><i class="del"></i><input type="text" class="ipt_text" name="loanname" placeholder="" data-validate="^.+$" data-validate-tip="请填写正确的姓名" require=""></span></li>
+			<li class="item"><label class="item_l">借款人身份证号</label><span class="ipt_w"><i class="del"></i><input type="text" class="ipt_text" name="cardcode" maxlength="18" placeholder="" data-validate="(^\d{15}$)|(^\d{17}[0-9Xx]$)" data-validate-tip="请填写正确的身份证号" require=""></span></li>
+			<!-- <li class="item"><label class="item_l">借款人年龄</label><span class="ipt_w"><i class="del"></i><input type="number" min="18" max="65" step="1" class="ipt_text" name="age" placeholder="" require></span></li> -->
+		</ul>
+		<!-- <p class="tip orgTip">签约机构</p> -->
+		<!-- <input type="hidden" class="typeIpt" name="type" value="2"> -->
+		<!-- <input type="hidden" id="username" value="哎呀"> -->
+		<!--type为0的新用户 1经纪人2 签约机构 新用户只展示机构代码 1可以选择身份 2 不可以选择身份-->
+
+					<ul class="apy_list" style="margin-top: 15px;">
+				<li class="item"><label class="item_l">机构代码</label><span class="ipt_w"><i class="del"></i><input type="text" class="ipt_text" name="orgInstitution" placeholder="请输入机构代码" value="" data-validate="^[a-zA-Z]{5}$" data-validate-tip="请输入正确的机构代码" require=""></span></li>
+			</ul>
+			<input type="hidden" name="type" value="2" require="">
+				<ul class="apy_list" style="margin-top: 15px;">
+			<li class="item"><label class="item_l">贷款金额</label><span class="ipt_w1"><input type="number" class="ipt_text" name="money" placeholder="" data-validate="^\d+$" data-validate-tip="请输入正确的贷款金额" require=""></span><span class="t_r">&nbsp;万元</span></li>
+		</ul>
+		<a href="javascript:;" class="btn gray" id="loanInfoBtn" url="/wechat/loanvalidate/">下一步</a>
+	</div>
+	<!--房产证信息-->
+	<div class="apy_tab" id="apy_tab2">
+		<div class="apy_top">
+			<p class="title">填写房产证信息</p>
+			<div class="process">
+				<div class="process_bar"></div>
+				<ul class="bar_ul">
+					<li class="bar_li cur cur2"><i></i><br><span class="txt">贷款信息</span></li>
+					<li class="bar_li cur cur1"><i></i><br><span class="txt">房产证照片</span></li>
+					<!-- <li class="bar_li"><i></i><br><span class="txt">身份证照片</span></li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="img_up_box">
+			上传房产证照片
+	        <ul class="img_up_list clearfix" id="upload_list" data-maxnum="3">
+				<li><div class="img_up_action"></div></li>
+	        </ul>
+	        <input type="hidden" class="imgsIpt" name="loanimg" require="" value="">
+	    </div>
+
+	    <ul class="apy_list">
+	    	<li class="item">
+	    		<label class="item_l">房产证类型</label>
+	    		<span class="arrow"></span>
+				<select name="" id="house_num_type" class="select_n rtl">
+					<option value="1">旧版</option>
+					<option value="2">新版</option>
+				</select>
+			</li>
+			<!--旧版  默认-->
+	    	<li class="item hn_item_old">
+	    		<label class="item_l">房产证号</label>
+	    		<span class="ipt_w1 ipt_w_h"><input type="text" class="ipt_s ipt_s1" style="width: 30px;" placeholder="">京房权证<input type="text" class="ipt_s ipt_s2" style="width: 30px;">字第<input type="text" class="ipt_s ipt_s3" require="">号</span>
+	    	</li>
+	    	<!--新版-->
+	    	<li class="item hn_item_new" style="display:none;">
+	    		<label class="item_l">房产证号</label>
+	    		<span class="ipt_w1 ipt_w_h">
+	    			<input type="text" class="ipt_s hn1" style="width: 15px;">(<input type="text" class="ipt_s hn2" style="width: 25px;">)<input type="text" class="ipt_s hn3" style="width: 40px">不动产权第<input type="text" class="ipt_s hn4" style="width: 42px;" require="">号</span>
+	    	</li>
+			<li class="item">
+				<label class="item_l">抵押顺位</label>
+				<span class="ipt_w"><input type="hidden" name="sequence" value="01" require=""></span>
+				<span id="arrow" class="arrow"></span>
+				<select name="" id="sequenceSel" class="select_n rtl">
+											<option value="01">一抵</option>
+											<option value="02">二抵</option>
+									</select>
+			</li>
+			<li class="item sequence" style="display:none">
+				<label class="item_l">一抵金额</label>
+				<span class="ipt_w1"><input type="number" class="ipt_text" name="sequencemoney" placeholder=""></span><span class="t_r">&nbsp;万元</span>
+			</li>
+		</ul>
+		<a href="javascript:;" class="btn gray" id="houseInfoBtn" url="/wechat/doapply/">提交</a>
+	    <p class="tip" style="line-height: 20px; height: auto; padding-top: 20px;">	
+	    	提示：<br>
+	    	1.上传照片可清晰显示抵押物坐落位置、面积、社区名；抵押物所有/共有人、房产类型、房产证号；<br>
+	    	2.最多可上传3张照片，每张照片大小不超过3M。
+	    </p>
+	</div>
+	<div class="query-mask" style="display: none;">
+		<div class="query-modal c-585858 bgwhite tac" style="margin-top: 293.5px;">
+			<p class="fs30">用询价助手，3分钟询值</p>
+			<div id="nomore" class="nomore">
+				<img src="http://fangdai.dxhbank.com/static/shendengfangdai/images/notselected_9e791ca.png">
+				<img style="display:none;" src="http://fangdai.dxhbank.com/static/shendengfangdai/images/selected_1fabd98.png">
+				<span class="c-a3a3a3">不再提醒</span>
+			</div>
+			<div class="btn-box border-top">
+				<span id="goSubmit" class="left-btn">继续提单</span>
+				<span id="goQuery" class="c-28a7e1">询价助手</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="loading-mask dn">
+		<div class="loading-box"></div>
+	</div>
+	
+	<!--身份证照片-->
+	<!-- <div class="apy_tab" id="apy_tab3">
+		<div class="apy_top">
+			<p class="title">上传身份证照片</p>
+			<div class="process">
+				<div class="process_bar"></div>
+				<ul class="bar_ul">
+					<li class="bar_li cur cur2"><i></i><br><span class="txt">贷款信息</span></li>
+					<li class="bar_li cur cur1 cur2"><i></i><br><span class="txt">房产证照片</span></li>
+					<li class="bar_li cur cur1"><i></i><br><span class="txt">身份证照片</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="img_up_box">
+			上传身份证照片<br>
+	        <ul class="img_up_list clearfix" id="upload_list2" data-maxNum="1">
+				<li><div class="img_up_action"></div></li>
+	        </ul>
+	        <input type="hidden" class="imgsIpt" name="certimg" require>
+	    </div>
+		<a href="javascript:;" class="btn gray" id="apply" url="/wechat/doapply/">提交贷款</a>
+		<p class="tip" style="line-height: 20px; height: auto; padding-top: 20px;">	
+	    	提示：<br>
+	    	1.上传照片为身份证正面图片，需保证清晰无遮挡；<br>
+	    	2.图片大小不超过3M。
+	    	3.请根据选择正确的房产证类型。
+	    </p>
+	</div> -->
+
+	<!--由身份证照片获取到年龄和性别-->
+	<input type="hidden" name="age">
+	<input type="hidden" name="gender">
+	<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="apply_90b69d0.js"></script>
+<!--<script>
+		require('pages/apply');
+	</script>-->
+
+</body></html>

@@ -1,0 +1,123 @@
+<html><head><title>我要投诉</title>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>神灯房产</title>
+<script>
+	window.slog = function(msg, filename, lineno) {
+	setTimeout(function() {
+		try {
+			var data = {};
+			if (typeof msg !== 'object') {
+				data.msg = msg;
+				data.file = filename;
+				data.lineno = lineno;
+			} else {
+				data.msg = msg.message;
+				data.file = msg.filename;
+				data.lineno = msg.lineno;
+				data.colno = msg.colno || '';
+				data.stack = msg.error && msg.error.stack.toString() || '';
+			}
+			data.date = Date.now();
+			data.route = window.location.href;
+			data.ua = navigator.userAgent;
+			if(!data.file || file == 'undefined'){
+				//找不到文件的情况
+				return;
+			}
+			if(data.file == data.route){
+				//根本没有在模板中写过js
+				return;
+			}
+			var info = encodeURIComponent(JSON.stringify(data));
+			var img = new Image();
+			img.onload = img.onerror = function() {
+				img = null;
+			};
+			img.src = '/api/jsexception?msg='+ info;
+		} catch(e) {
+		}
+	}, 0);
+};
+
+window.addEventListener('error', slog);
+</script>
+
+<link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+<link type="text/css" rel="stylesheet" href="suggestion_64f27e0.css">
+<script>
+function jssdk() {
+	return {
+		appId:'wx53d4d01962f51f97',
+		timestamp:1488510621,
+		nonceStr:'2fd379f6816aab5c011300e7df65dedb',
+		signature:'08beb2644a727bf77b1b96baacdf15e88f0ca386'
+	};
+}
+var M_TOKEN = 'lankG0/1yBrLtk4bbqRnoS1B9dqiyxoRG2CqCI2n5Mw=';
+var phone = '18643436914';
+</script>
+</head>
+<body>
+	<textarea id="text" placeholder="请输入您的反馈意见（字数1000以内）" name="content"></textarea>
+	<div class="img_up_box">
+		<p class="upload_tip">上传图片</p>
+		<div class="show" id="result">
+			<!--<div class="pic">
+                <img src="images/pic.png" width="80px" height="80px">
+                <div class="close">x</div>
+            </div>-->
+		</div>
+		<div class="f_lab" id="f_tab1">+<input type="file" class="file" id="file" multiple="5"></div>
+    </div>
+    <div class="item">
+    	<label class="item_l">联系方式</label>
+    	<input type="text" name="phone" class="ipt_text" value="18643436914" require="">
+    </div>
+
+    <a href="javascript:;" class="btn gray" id="submit" url="/wechat/dosuggestion/" style="margin-top: 40px;">提交</a>
+	
+	<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="suggestion_68384e8.js"></script>
+<!--<script>
+		require('pages/suggestion');
+	</script>-->
+<script type="text/javascript">
+	var result = document.getElementById("result");
+	var input = document.getElementById("file");
+
+	if(typeof FileReader === 'undefined'){
+		result.innerHTML = "<p class='warn'>抱歉，你的浏览器不支持 FileReader</p>";
+		input.setAttribute('disabled','disabled');
+	}else{
+		input.addEventListener('change',readFile,false);
+	}
+
+	function readFile(){
+
+		for(var i=0;i<this.files.length;i++)
+		{
+			var file = this.files[i];
+			if(!/image\/\w+/.test(file.type)){
+				alert("请确保文件为图像类型");
+				return false;
+			}
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+				result.innerHTML+= '<div class="pic"><img src="'+this.result+'" alt="" width="80px" height="80px" id="close"/><div class="close"></div></div>';
+			}
+		}
+		var imgs = result.getElementsByTagName("img");
+		if(imgs.length > 1){
+			input.setAttribute('disabled','disabled');
+			alert("最多可上传3张图片！");
+		}
+	}
+</script>
+</body></html>

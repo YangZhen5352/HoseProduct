@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>个人资料</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+    <link type="text/css" rel="stylesheet" href="changephone_0e5db17.css">
+    <link type="text/css" rel="stylesheet" href="person_dd52167.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488517739,
+                nonceStr:'13fe25a266aae98d1c1df6d6bdee1b9b',
+                signature:'f58816ecc5f0d268c15f6e0774345bbbd9649a25'
+            };
+        }
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+
+    </script>
+</head>
+<body>
+<div id="person">
+    <div v-if="currentView == 'person'" class="slider_wrap">
+        <div class="person mt20" >
+            <ul class="person_list">
+                <li><a href="javascript:;"><span class="left">姓&nbsp;&nbsp;&nbsp;名</span><span class="right">杨振</span><!-- <span class="arrow"></span> --></a></li>
+                <li class="pen_icon" v-on="click: go('changePhone')"><span class="left">手机号</span><span class="right">13391588580</span><a class="right" style="margin-right: 25px;" href="tel:18611139213"></a></li>
+            </ul>
+
+            <ul class="person_list">
+                <li><a href="myorder.html"><span class="left">总订单数</span><span class="right">0</span><span class="arrow"></span></a></li>
+            </ul>
+            <div>
+                <ul class="person_list recommend">
+                    <li><a href="morgan.html">
+						<span class="left">
+							签约机构						</span>
+                        <span class="right"></span>
+                        <span class="arrow"></span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <change-phone v-if="currentView == 'changePhone'" phone={{@phone}} current-view={{@currentView}}></change-phone>
+    <verify-code v-if="currentView == 'verifyCode'" phone={{phone}} type={{type}}></verify-code>
+
+</div>
+<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="changephone_354b65a.js"></script>
+<script type="text/javascript" charset="utf-8" src="person_3e476aa.js"></script>
+<script>
+    require('pages/person');
+</script>
+</body>
+</html>

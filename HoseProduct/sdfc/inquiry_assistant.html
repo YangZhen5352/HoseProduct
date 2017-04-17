@@ -1,0 +1,238 @@
+<html><head><title>询价助手</title>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>神灯房产</title>
+<script>
+	window.slog = function(msg, filename, lineno) {
+	setTimeout(function() {
+		try {
+			var data = {};
+			if (typeof msg !== 'object') {
+				data.msg = msg;
+				data.file = filename;
+				data.lineno = lineno;
+			} else {
+				data.msg = msg.message;
+				data.file = msg.filename;
+				data.lineno = msg.lineno;
+				data.colno = msg.colno || '';
+				data.stack = msg.error && msg.error.stack.toString() || '';
+			}
+			data.date = Date.now();
+			data.route = window.location.href;
+			data.ua = navigator.userAgent;
+			if(!data.file || file == 'undefined'){
+				//找不到文件的情况
+				return;
+			}
+			if(data.file == data.route){
+				//根本没有在模板中写过js
+				return;
+			}
+			var info = encodeURIComponent(JSON.stringify(data));
+			var img = new Image();
+			img.onload = img.onerror = function() {
+				img = null;
+			};
+			img.src = '/api/jsexception?msg='+ info;
+		} catch(e) {
+		}
+	}, 0);
+};
+
+window.addEventListener('error', slog);
+</script>
+
+<link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+<link type="text/css" rel="stylesheet" href="query_f971d63.css">
+<script>
+function jssdk() {
+	return {
+		appId:'wx53d4d01962f51f97',
+		timestamp:1488443770,
+		nonceStr:'09d686140e8ff576b88c1d82fcb13cdf',
+		signature:'ffe7c82db6570c4ae37190a40e0f49b9a6815117'
+	};
+}
+var houseProperty = {"1":"\u56de\u8fc1\u623f","2":"\u623f\u6539\u623f","3":"\u7ecf\u9002\u623f","4":"\u592e\u4ea7\u623f","5":"\u6210\u672c\u4ef7\u623f","6":"\u5546\u54c1\u623f","7":"\u9152\u5e97\u5f0f\u516c\u5bd3","8":"\u5176\u4ed6","10":"\u6309\u7ecf\u9002\u623f\u7ba1\u7406"};
+var planUse       = {"01":"\u666e\u901a\u5546\u54c1\u4f4f\u5b85","02":"\u5546\u4f4f","03":"\u522b\u5885","04":"\u5199\u5b57\u697c","05":"\u5546\u4e1a","06":"\u5176\u4ed6","21":"\u4f4f\u5b85","22":"\u9152\u5e97\u5f0f\u516c\u5bd3","23":"\u5546\u52a1\u516c\u5bd3","24":"\u670d\u52a1\u5f0f\u516c\u5bd3","25":"\u516c\u5bd3\uff08\u975e\u4f4f\u5b85\uff09","26":"\u516c\u5bd3"};
+var M_TOKEN = 'lankG0/1yBrLtk4bbqRnoS1B9dqiyxoRG2CqCI2n5Mw=';
+</script>
+</head>
+<body>
+	
+	<div id="query">
+		<!-- 询价信息输入 -->
+		<div id="inputInfos">
+			<p class="mt20 ml30 fs24 c-a3a3a3">输入抵押物基本信息获得初步估值</p>
+			<div class="mt20 plr30 bgwhite fs30 border-top border-bottom">
+				<div class="angle-arrow">
+					<span class="label">社区名</span>
+					<input class="input tar" type="text" placeholder="请选择抵押物所在社区名" readonly="readonly">
+				</div>
+			</div>
+
+			<div class="plr30 bgwhite fs30 border-bottom">
+				<div class="select-arrow">
+					<span class="label">楼　栋</span>
+					<select class="select-n c-ccc">
+					  	<option value="">请选择抵押物楼栋号</option>
+					  	
+					</select>
+				</div>
+			</div>
+
+			<div class="plr30 bgwhite fs30 border-bottom">
+				<div class="select-arrow">
+					<span class="label">门牌号</span>
+					<select class="select-n c-ccc">
+					  	<option value="">请选择抵押物门牌号</option>
+					  	
+					</select>
+				</div>
+			</div>
+
+			<div class="plr30 bgwhite fs30 border-bottom">
+				<div class="m2">
+					<span class="label area-input">建筑面积</span>
+					<input type="number" class="input tar" placeholder="请填写抵押物建筑面积">
+				</div>
+			</div>
+
+			<div class="mt20 plr30 bgwhite fs30 border-bottom">
+				<div class="select-arrow">
+					<span class="label">规划用途</span>
+					<select id="replaceLtr" class="select-n c-ccc">
+					  	<option value="">请选择抵押物规划用途</option>
+					<option value="01">普通商品住宅</option><option value="21">住宅</option><option value="02">商住</option><option value="03">别墅</option><option value="22">酒店式公寓</option><option value="23">商务公寓</option><option value="24">服务式公寓</option><option value="25">公寓(非住宅)</option><option value="26">公寓</option><option value="05">商业</option><option value="04">写字楼</option><option value="06">其他</option></select>
+				</div>
+			</div>
+
+			<div class="plr30 bgwhite fs30 border-bottom">
+				<div class="select-arrow">
+					<span class="label">房屋性质</span>
+					<select class="select-n c-ccc">
+						<option value="">请选择抵押房屋性质</option>
+					<option value="6">商品房</option><option value="3">经适房</option><option value="10">按经适房管理</option><option value="11">按商品房管理</option><option value="2">房改房</option><option value="5">成本价房</option><option value="1">回迁房</option><option value="4">央产房</option><option value="7">酒店式公寓</option><option value="8">其他</option></select>
+				</div>
+			</div>
+
+			<a href="javascript:;" class="btn gray">开始询价</a>
+			<p class="mt40 fs24 c-a3a3a3 tac"><span>没有找到您的抵押物？<a class="c-28a7e1 pb20" href="submit_order.html">点此人工评估！</a></span></p>
+		</div>
+		<!-- 询价信息输入 -->
+		
+		<!-- 查找社区 -->
+		<div id="searchCommunity" style="display: none;">
+			<div class="search-box bgwhite">
+				<i class="back-arrow fl" onclick="history.go(-1)"></i>
+				<span id="searchBtn" class="tac fs30 fr c-a3a3a3">搜索</span>
+				<div class="ipt-box">
+					<i class="search-icon vam"></i>
+					<input type="text" class="search-ipt" placeholder="请输入社区名称/关键词">
+					<div class="ipt-del-btn" style="right: 7px; display: none;"></div>
+				</div>
+			</div>
+
+			<!-- 查询结果 -->
+			<div class="community-list" style="display: none;">
+				<!-- 有结果 -->
+				<div class="box plr30 bgwhite border-top border-bottom" style="display: none;">
+					
+				</div>
+				<!-- 没结果 -->
+				<div class="search-none tac" style="display: none;">
+					<img src="http://fangdai.dxhbank.com/static/shendengfangdai/images/house_d08ca77.png">
+					<p class="mt30 fs26 c-a3a3a3">暂无该小区信息</p>
+					<p class="mt60 fs24 c-a3a3a3">没有找到您的抵押物？<a href="/wechat/apply/?notTip" class="c-28a7e1">进行人工评估</a></p>
+				</div>
+			</div>
+
+			<div>
+				<!-- <div class="hot-search">
+					<p class="title pl30 c-a3a3a3 fs24">热门楼盘</p>
+					<div class="hot-community">
+						<li class="link tac" v-repeat="hotCommunityList">{{$value}}</li>
+						<span class="justify_fix"></span>
+					</div>
+				</div> -->
+
+				<div class="history-search" style="display: none;">
+					<p class="title pl30 c-a3a3a3 fs24">历史搜索</p>
+					<div class="box plr30 bgwhite">
+						<li class="border-bottom pl30"></li>
+					</div>
+					<li class="clear-history tac">清空历史搜索</li>
+				</div>
+			</div>
+		</div>
+		<!-- 查找社区 -->
+
+		<!-- 侧边栏 -->
+		<!-- <div id="slide">
+			<div v-show="isShowSlide" class="mask" v-on="click: isShowSlide = false"></div>
+			<div class="slide" v-class="right-left: isShowSlide">
+				<div class="header pd30">
+					<i class="back" v-on="click: isShowSlide = false">返回</i><span class="title">选择抵押物楼栋号</span>
+				</div>
+				<div class="list">
+					<div class="list-item border-top pl30 fs24" v-repeat="i in buildingNum">{{i}}</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- <div class="list">
+			<div class="list-item border-top pl30 fs24" v-repeat="b in buildingNum">
+				<div class="bNum">{{b.bNum}}</div>
+				<div class="doorNum" 
+					 v-repeat="d in b.doorNum"
+					 data-id="b.bNum">{{d}}</div>
+			</div>
+		</div> -->
+		<!-- 侧边栏 -->
+
+		<!-- 询价结果 -->
+		<div class="resultPage" style="display: none;">
+			<div class="bgwhite tac">
+				<div class="quota">
+					<p>一抵最高授信额</p>
+					<h2>0万</h2>
+				</div>
+				<div class="line"></div>
+				<div class="quota">
+					<p>二抵最高授信额</p>
+					<h2>0万</h2>
+				</div>
+			</div>
+			<p class="mt20 tac bgwhite">房屋估值：0万</p>
+			<div class="tip mt20 ml30 fs24 c-a3a3a3">
+				<p>1.估值结果仅供参考，实际授信金额以最终审批为准</p>
+				<p>2.二抵授信额度需要在此基础上减去已抵押金额</p>
+				<p>3.授信额度为“0”时，请点击“提交订单”为您人工授信。</p>
+			</div>
+			<a class="btn" href="/wechat/apply/?reqFlowNo=&amp;notTip">提交订单</a>
+			<a class="btn bgwhite c-585858">返回</a>
+		</div>
+		<!-- 询价结果 -->
+
+		<div class="toast-wrapper toast-transition" style="display: none;">
+	<div class="toast-body"></div>
+</div>
+		<div class="loading-mask" style="display: none;">
+	<div class="loading-box"></div>
+</div>
+	</div>
+
+	<!--<script type="text/javascript" charset="utf-8" src="http://fangdai.dxhbank.com/static/shendengfangdai/pkg/common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://fangdai.dxhbank.com/static/shendengfangdai/pages/query/query_f321f49.js"></script>-->
+<script type="text/javascript" src="common_129820a.js"></script>
+<script type="text/javascript" src="query_f321f49.js"></script>
+<!--<script>
+		require('pages/query');
+	</script>-->
+
+</body></html>

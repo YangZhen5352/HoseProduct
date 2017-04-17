@@ -1,0 +1,59 @@
+<html><head><title>使用说明</title>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>神灯房产</title>
+<script>
+	window.slog = function(msg, filename, lineno) {
+	setTimeout(function() {
+		try {
+			var data = {};
+			if (typeof msg !== 'object') {
+				data.msg = msg;
+				data.file = filename;
+				data.lineno = lineno;
+			} else {
+				data.msg = msg.message;
+				data.file = msg.filename;
+				data.lineno = msg.lineno;
+				data.colno = msg.colno || '';
+				data.stack = msg.error && msg.error.stack.toString() || '';
+			}
+			data.date = Date.now();
+			data.route = window.location.href;
+			data.ua = navigator.userAgent;
+			if(!data.file || file == 'undefined'){
+				//找不到文件的情况
+				return;
+			}
+			if(data.file == data.route){
+				//根本没有在模板中写过js
+				return;
+			}
+			var info = encodeURIComponent(JSON.stringify(data));
+			var img = new Image();
+			img.onload = img.onerror = function() {
+				img = null;
+			};
+			img.src = '/api/jsexception?msg='+ info;
+		} catch(e) {
+		}
+	}, 0);
+};
+
+window.addEventListener('error', slog);
+</script>
+
+<link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+<link type="text/css" rel="stylesheet" href="moneydetail_004f7eb.css">
+</head>
+<body>
+	<img src="howtoorder_b1ea1a2.jpg" width="100%">
+	<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="moneydetail_38b065f.js"></script>
+
+</body></html>

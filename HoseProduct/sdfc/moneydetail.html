@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>钱包收支明细</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="/sdfc/static/shendengfangdai/pkg/common_3c1335a.css">
+    <link type="text/css" rel="stylesheet" href="/sdfc/static/shendengfangdai/pages/moneydetail/moneydetail_004f7eb.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488513295,
+                nonceStr:'fe0db7f31b552aa39a41e8e00248e3c8',
+                signature:'9b0447b112595473c102baddc4d2bef3d1baa623'
+            };
+        }
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+
+        var list = [];
+    </script>
+</head>
+<body>
+
+<div id="accountList">
+    <div class="pl30 pr30 bgwhite mt20 border-bottom border-top">
+        <a v-repeat="l in list"
+           v-class="border-bottom: $index < list.length-1"
+           href="/wechat/singlemoneydetail/?detail_id={{l.id}}"
+           class="ptb30 angle-arrow c-a3a3a3 fs30 clearfix db">
+            <div class="fl">
+                <p class="c-585858 fs30" v-cloak>{{l.name_forshow}}</p>
+                <p class="fs24 pt14" v-cloak>{{l.approvalnote}}</p>
+            </div>
+            <div class="fr pr30 tar">
+                <p class="fs30 a-585858"><span v-class="c-5d9801: l.name_forshow === '充值', c-fb0014: l.name_forshow !== '充值'" v-cloak>{{l.amount_forshow}}</span> 元</p>
+                <p class="fs24 pt14" v-cloak>{{l.time_forshow}}</p>
+            </div>
+        </a>
+        <p v-show="list.length === 0" class="pd30">暂无收支明细</p>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="/sdfc/static/shendengfangdai/pkg/common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="/sdfc/static/shendengfangdai/pages/moneydetail/moneydetail_38b065f.js"></script>
+<script>
+    require('pages/moneydetail');
+</script>
+</body>
+</html>

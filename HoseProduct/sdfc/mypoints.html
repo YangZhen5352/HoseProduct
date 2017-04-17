@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的积分</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488516217,
+                nonceStr:'52c89dce8206496fb744623a0097b71f',
+                signature:'9687ce695e20eadf3e87685fc5c60e87ef67553d'
+            };
+        }
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+        var points = '2400';
+    </script>
+</head>
+<body>
+<div id="pages-mypoint">
+    <div v-if="currentView == 'mypoints'">
+        <div class="points-box pt30 tac">
+            <div class="fr"><i></i><a class="normal_a" href="pointsillustrate.html" id="state">积分说明</a></div>
+            <div class="points">{{points}}</div>
+            <div class="desc"><span>查看明细</span><i></i></div>
+        </div>
+        <div class="items mt30 plr30 border-bottom border-top bgwhite">
+            <div class="ptb30 border-bottom">
+                <span>积分商城</span>
+                <i class="fr angle-arrow"></i>
+            </div>
+            <div class="ptb30">
+                <span>我的新星卡</span>
+                <i class="fr angle-arrow"></i>
+            </div>
+        </div>
+    </div>
+
+    <store v-if="currentView == 'store'" buy-Num={{@buyNum}} points={{points}} goods={{goods}} current-view={{@currentView}}></store>
+    <points-list v-if="currentView == 'pointsList'" points-detail={{@pointsDetail}}></points-list>
+    <points-detail v-if="currentView == 'pointsDetail'" points-detail={{pointsDetail}}></points-detail>
+    <mycoupon v-if="currentView == 'mycoupon'" ></mycoupon>
+    <verify-code v-if="currentView == 'verifyCode'" buy-Num={{@buyNum}} phone={{phone}} type={{type}}></verify-code>
+</div>
+<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script>
+    require('points/mypoints');
+    $("#state").on("touchend",function(){
+        window.location.href = "pointsillustrate.html";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>神灯房产</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="/sdfc/static/shendengfangdai/pkg/common_3c1335a.css">
+    <link type="text/css" rel="stylesheet" href="/sdfc/static/shendengfangdai/pages/morgan/morgan_d6ec1dc.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488518132,
+                nonceStr:'444e388bf5f71c8f2a216551084592c8',
+                signature:'8069d0b4d5926f56c0b283023a32cd9c54ba7ae8'
+            };
+        }
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+
+    </script>
+</head>
+<body class="applyWrap">
+<div class="apy_tab" style="display: block;">
+    <input type="hidden" name="id" value="">
+    <div class="apy_top">
+        <p class="title orgTitle">
+            修改签约机构</p>
+    </div>
+
+    <p class="tip orgTip">签约机构</p>
+    <!-- <input type="hidden" class="typeIpt" name="type" value="0">
+    <input type="hidden" id="username" value="吴铮">
+    <ul class="apy_list">
+        <li class="item">
+            <span class="ipt_w1 pr20 ipt_select">
+                <input style="text-align:left" type="text" class="ipt_text val" placeholder="" value=" 签约机构 " readonly>
+            </span>
+            <select name="" id="agent" class="apy_select " style="width:70%">
+                <option value="1">经纪人</option>
+                <option value="2">签约机构</option>
+            </select>
+            <span class="arrow_org"></span>
+            <label >
+                <i class="del"></i>
+                <input type="text" class="ipt_text orgInstitution" name="orgInstitution" placeholder="请输入签约机构代码"  value="  " disabled require>
+            </label>
+        </li>
+    </ul> -->
+    <ul class="apy_list">
+        <li class="item"><label class="item_l">机构代码</label><span class="ipt_w"><i class="del"></i><input type="text" require class="ipt_text" name="orgInstitution" placeholder="请输入机构代码" value=""></span></li>
+    </ul>
+    <input type="hidden" name="type" value="2" require>
+    <a href="javascript:;" class="btn" id="save" url="/wechat/doorgan/">保存</a>
+</div>
+<script type="text/javascript" charset="utf-8" src="/sdfc/static/shendengfangdai/pkg/common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="/sdfc/static/shendengfangdai/pages/morgan/morgan_1086916.js"></script>
+<script>
+    require('pages/morgan');
+</script>
+</body>
+</html>

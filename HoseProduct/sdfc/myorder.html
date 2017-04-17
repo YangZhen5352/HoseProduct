@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的订单</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+
+    <link type="text/css" rel="stylesheet" href="myorder_873c0f8.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488509550,
+                nonceStr:'05041b395f250318975cdc9fd04239cd',
+                signature:'b3c9696a4279c6c3d518d77b3ff4c7143c8bd31f'
+            };
+        }
+
+        var anyData = 0;
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+    </script>
+</head>
+<!--?php  var_dump($data)?-->
+<body>
+<div class="slider_wrap">
+    <!-- <p style="text-align:center; margin-top:30px; font-size:16px;">您暂时还没有订单!</p> -->
+    <div class="search-box bgwhite">
+        <i style="display: none;" class="back-arrow fl"></i>
+        <span style="display: none;" id="searchBtn" class="tac fs30 fr c-28a7e1">搜索</span>
+        <div class="ipt-searchbox">
+            <i class="search-icon vam"></i>
+            <input type="text" id="keyWords" class="search-ipt" placeholder="请输入订单号/借款人姓名">
+            <i class="del dn"></i>
+        </div>
+    </div>
+
+    <!-- tap标签 -->
+    <ul class="tap-list border-top">
+        <li style="color: #28a7e1;">全部</li>
+        <li>进行中</li>
+        <li>待还款</li>
+        <li>已结清</li>
+        <li>已失效</li>
+        <i class="line"></i>
+    </ul>
+
+    <!-- 历史搜索 -->
+    <div class="history dn">
+        <h2 class="c-a3a3a3">历史搜索</h2>
+        <div class="order-arr pl30">
+
+        </div>
+
+        <div class="clear-history c-28a7e1">清空搜索历史</div>
+    </div>
+    <div class="search-result dn">
+
+    </div>
+    <div class="search-notfound tac" style="display:none;">
+        <img src="notfound_d690c6f.png">
+        <p class="fs12 c-a3a3a3">搜索无结果</p>
+    </div>
+
+    <!-- 订单列表 -->
+    <div class="scroller-wrap">
+        <div class="scroller">
+            <div class="scroller-content">
+                <div class="order">
+                </div>
+            </div>
+            <div class="down">下拉刷新</div>
+            <div class="up">上拉加载</div>
+        </div>
+    </div>
+    <div class="not-found tac" style="display:none;">
+        <img src="notfound_d690c6f.png">
+        <p class="fs12 c-a3a3a3">您暂时还没有订单</p>
+    </div>
+</div>
+<input type="hidden" id="time" value="1488509550" />
+<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="myorder_60c4f22.js"></script>
+<script>
+    require('pages/myorder');
+</script>
+</body>
+</html>

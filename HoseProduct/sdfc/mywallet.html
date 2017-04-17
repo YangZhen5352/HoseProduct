@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=4.0,minimum-scale=1.0,user-scalable=0,width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的钱包</title>
+    <script>
+        window.slog = function(msg, filename, lineno) {
+            setTimeout(function() {
+                try {
+                    var data = {};
+                    if (typeof msg !== 'object') {
+                        data.msg = msg;
+                        data.file = filename;
+                        data.lineno = lineno;
+                    } else {
+                        data.msg = msg.message;
+                        data.file = msg.filename;
+                        data.lineno = msg.lineno;
+                        data.colno = msg.colno || '';
+                        data.stack = msg.error && msg.error.stack.toString() || '';
+                    }
+                    data.date = Date.now();
+                    data.route = window.location.href;
+                    data.ua = navigator.userAgent;
+                    if(!data.file || file == 'undefined'){
+                        //找不到文件的情况
+                        return;
+                    }
+                    if(data.file == data.route){
+                        //根本没有在模板中写过js
+                        return;
+                    }
+                    var info = encodeURIComponent(JSON.stringify(data));
+                    var img = new Image();
+                    img.onload = img.onerror = function() {
+                        img = null;
+                    };
+                    img.src = '/api/jsexception?msg='+ info;
+                } catch(e) {
+                }
+            }, 0);
+        };
+
+        window.addEventListener('error', slog);
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="common_3c1335a.css">
+    <link type="text/css" rel="stylesheet" href="mywallet_235b50a.css">
+    <script>
+        function jssdk() {
+            return {
+                appId:'wx53d4d01962f51f97',
+                timestamp:1488510389,
+                nonceStr:'56d66715477d7991d69a88eed82f2143',
+                signature:'78969a4dbc8ec64a9c95943fe4fcbdb663b83a87'
+            };
+        }
+        var M_TOKEN = 'KOlEZvHRfGScUOtzlu+E723s1cYjK1dk9TeelvreCmc=';
+
+        var name = '';
+
+        var balance     = 0.00;
+        var isShowTopup = '';
+        var isShowTake  = '1';
+        var detailUrl   = '/wechat/moneydetail/';
+    </script>
+</head>
+<body class="bgwhite">
+<div id="mywallet" class="tac">
+    <img src="icon_wallet_b51fd75.png" height="109" width="109">
+    <h2 class="balance c-585858" v-cloak>{{balance | toFixed | currency '￥'}}</h2>
+    <a v-if="isShowTopup" href="javascript:;" id="topup" class="round-solid-btn">充值</a>
+    <a v-if="isShowTake" href="/wechat/withdrawals/" id="topup" class="round-hollow-btn mt20">提现</a>
+    <a href="moneydetail.html" class="ptb30 angle-arrow fs24 c-a3a3a3 dib pr30" id="money"><span>钱包收支明细</span></a>
+</div>
+
+
+<script type="text/javascript" charset="utf-8" src="common_129820a.js"></script>
+<script type="text/javascript" charset="utf-8" src="mywallet_592eebe.js"></script>
+<script>
+    require('pages/mywallet');
+    $("#money").on("touchend",function(){
+        window.location.href = "moneydetail.html";
+    });
+</script>
+</body>
+</html>

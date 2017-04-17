@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4M4-Iu-YkK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AboutVC-->
+        <scene sceneID="mBF-kP-vQ8">
+            <objects>
+                <tableViewController id="4M4-Iu-YkK" customClass="AboutVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UhI-1Q-QIW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <sections>
+                            <tableViewSection id="y9o-Hk-kd5">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="222" id="Z7e-Rx-tbX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z7e-Rx-tbX" id="o9v-hq-tKk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="图标.png" translatesAutoresizingMaskIntoConstraints="NO" id="GOK-Nn-lgr">
+                                                    <rect key="frame" x="155" y="38" width="64" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="64" id="F1i-yg-0t8"/>
+                                                        <constraint firstAttribute="height" constant="64" id="XiC-72-2e2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="神灯 iOS 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sau-0b-b0q">
+                                                    <rect key="frame" x="87" y="117" width="200" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="DtD-K9-sRk"/>
+                                                        <constraint firstAttribute="width" constant="200" id="yEa-sl-98o"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="越好用    越优活" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-Ah-IcW">
+                                                    <rect key="frame" x="87" y="143" width="200" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="3es-XG-Dpj"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Jf2-ks-agL"/>
+                                                        <constraint firstAttribute="width" constant="200" id="KoX-Uk-qNB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GOK-Nn-lgr" firstAttribute="centerX" secondItem="o9v-hq-tKk" secondAttribute="centerX" id="1F3-ZE-lHc"/>
+                                                <constraint firstItem="E0t-Ah-IcW" firstAttribute="top" secondItem="Sau-0b-b0q" secondAttribute="bottom" constant="5" id="3PZ-Ei-Ffd"/>
+                                                <constraint firstItem="Sau-0b-b0q" firstAttribute="centerX" secondItem="GOK-Nn-lgr" secondAttribute="centerX" id="9BB-fO-1CN"/>
+                                                <constraint firstItem="GOK-Nn-lgr" firstAttribute="top" secondItem="o9v-hq-tKk" secondAttribute="topMargin" constant="30" id="PcH-Dg-hHW"/>
+                                                <constraint firstItem="Sau-0b-b0q" firstAttribute="top" secondItem="GOK-Nn-lgr" secondAttribute="bottom" constant="15" id="qnE-BS-mGc"/>
+                                                <constraint firstItem="E0t-Ah-IcW" firstAttribute="centerX" secondItem="GOK-Nn-lgr" secondAttribute="centerX" id="tPK-J8-Urn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Twa-Kk-NLm">
+                                        <rect key="frame" x="0.0" y="222" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Twa-Kk-NLm" id="XXV-Sn-2aq">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="给神灯房产打分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-UP-Ub7">
+                                                    <rect key="frame" x="20" y="9" width="306" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27.5" id="FoU-mk-eJ7"/>
+                                                        <constraint firstAttribute="width" constant="306" id="JuV-od-h3W"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7f-XW-jyE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="377" height="1"/>
+                                                    <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="h9x-cC-8X9"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czW-x8-hRP">
+                                                    <rect key="frame" x="0.0" y="43" width="377" height="1"/>
+                                                    <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="4pt-Ja-X6L"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="jIO-YP-Thb"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="G7f-XW-jyE" firstAttribute="top" secondItem="XXV-Sn-2aq" secondAttribute="top" id="9sl-jp-YtL"/>
+                                                <constraint firstItem="5uH-UP-Ub7" firstAttribute="leading" secondItem="XXV-Sn-2aq" secondAttribute="leading" constant="20" id="Ema-HA-r2A"/>
+                                                <constraint firstItem="czW-x8-hRP" firstAttribute="leading" secondItem="XXV-Sn-2aq" secondAttribute="leading" id="Ixo-Gl-Jrt"/>
+                                                <constraint firstItem="G7f-XW-jyE" firstAttribute="leading" secondItem="XXV-Sn-2aq" secondAttribute="leading" id="PAj-zh-ecJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="czW-x8-hRP" secondAttribute="bottom" id="oyL-M9-j1j"/>
+                                                <constraint firstAttribute="trailing" secondItem="G7f-XW-jyE" secondAttribute="trailing" constant="-35" id="tu2-0z-psR"/>
+                                                <constraint firstAttribute="trailing" secondItem="czW-x8-hRP" secondAttribute="trailing" constant="-35" id="yGM-28-8Po"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="5uH-UP-Ub7" firstAttribute="centerY" secondItem="Twa-Kk-NLm" secondAttribute="centerY" id="hAV-xj-9Gi"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="4M4-Iu-YkK" id="iJ0-Cc-Bgn"/>
+                            <outlet property="delegate" destination="4M4-Iu-YkK" id="kcK-yD-3o9"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="cell" destination="Twa-Kk-NLm" id="xp3-OD-uVr"/>
+                        <outlet property="cell01" destination="Z7e-Rx-tbX" id="4TS-H9-myn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zGH-nA-1b7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="-35"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="图标.png" width="270" height="270"/>
+    </resources>
+</document>

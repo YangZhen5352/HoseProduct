@@ -1,0 +1,1 @@
+define("pages/pointsillustrate",function(i){var t=i("Zepto");t(".integral_div ul li ").tap(function(){"none"===t(this).children("div").css("display")?(t(this).find("div").show(),t(this).children("i").addClass("i_rotate")):(t(this).find("div").hide(),t(this).children("i").removeClass("i_rotate"))})});
