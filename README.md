@@ -5,25 +5,31 @@
 ----------- < PrefixHeader > -------------------
 
 #pragma mark----------- < 友盟的APPKey > -------------------
+
 #define APP_URL       @"http://www.umeng.com/social"
 #define UMAPP_KEY     @"58eb45dfb27b0a1e61001b7d"
 #define WXAPP_ID      @"wx5de5e1ca72fcd5b7"
 #define WXAPP_SECRET  @"d335924636cacefd1e7fec0b9ecaacb3"
 
 #pragma mark----------- < UIScreen > -------------------
+
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #pragma mark----------- < Alert提示 > -------------------
+
 #define Alert(s, d) [[[UIAlertView alloc] initWithTitle:s message:d delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show]
 
 #pragma mark----------- < BundleImageLoad > -------------------
+
 #define LOADIMAGE(file) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:nil]]
 
 #pragma mark----------- < LoadNib > -------------------
+
 #define LoadNib(nibName) [[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil] lastObject]
 
 #pragma mark----------- < 测试颜色 > -------------------
+
 #define KClearColor [UIColor clearColor] //透明色
 #define KWhiteColor [UIColor whiteColor] //白色
 #define KBlackColor [UIColor blackColor] //黑色
@@ -34,6 +40,7 @@
 
 
 #pragma mark----------- < 持久化数据存储 > -------------------
+
 #define U_Def [NSUserDefaults standardUserDefaults]
 
 // Object
@@ -68,15 +75,19 @@
 
 
 #pragma mark----------- < Notification > -------------------
+
 #define Notifi_Post(notiName, dictInfo) [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:nil userInfo: dictInfo]
 #define Notifi_AddOb(notiName, SEL) [[NSNotificationCenter defaultCenter] addObserver:self selector:SEL name:notiName object:nil]
 #define Notifi_Remove(notiName) [[NSNotificationCenter defaultCenter] removeObserver: notiName]
 
 #pragma mark----------- < FontSize > -------------------
+
 #define FontSize(size) [UIFont systemFontOfSize: size]
 
 #pragma mark----------- < AppDelegate > -------------------
+
 #define App ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
 #pragma mark----------- < Format > -------------------
+
 #define Format(obj) [NSString stringWithFormat:@"%@", obj]
