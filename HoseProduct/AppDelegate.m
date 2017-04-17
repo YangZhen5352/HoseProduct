@@ -30,7 +30,18 @@
     
     // 设置数字提醒
     NSArray *arr = GetObjcForKey(@"readMsg");
-    SetIntegerForKey((12 - arr.count), @"peopleCenterNumber");
+    SetIntegerForKey((21 - arr.count), @"peopleCenterNumber");
+    // 设置消息数字
+    NSInteger msgNumber = GetIntegerForKey(@"peopleCenterNumber");
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: msgNumber];
+    // 通知授权：在iOS8以后的版本，需要先授权，才能显示app右上角数字提醒
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (version >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        // 注册远程消息通知
+        [application registerForRemoteNotifications];
+    }
     
     NSLog(@"01 --- didFinishLaunchingWithOptions");
     // Override point for customization after application launch.
@@ -76,6 +87,9 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSLog(@"05 --- applicationDidEnterBackground");
+    // 设置消息数字
+    NSInteger msgNumber = GetIntegerForKey(@"peopleCenterNumber");
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: msgNumber];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
