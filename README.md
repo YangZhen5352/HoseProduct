@@ -4,13 +4,6 @@
 
 ----------- < PrefixHeader > -------------------
 
-#pragma mark----------- < 友盟的APPKey > -------------------
-
-#define APP_URL       @"http://www.umeng.com/social"
-#define UMAPP_KEY     @"58eb45dfb27b0a1e61001b7d"
-#define WXAPP_ID      @"wx5de5e1ca72fcd5b7"
-#define WXAPP_SECRET  @"d335924636cacefd1e7fec0b9ecaacb3"
-
 #pragma mark----------- < UIScreen > -------------------
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -91,3 +84,11 @@
 #pragma mark----------- < Format > -------------------
 
 #define Format(obj) [NSString stringWithFormat:@"%@", obj]
+
+#pragma mark----------- < 友盟的APPKey > -------------------
+
+#define APP_URL       @"http://www.umeng.com/social"
+#define UMAPP_KEY     @"58eb45dfb27b0a1e61001b7d"
+#define WXAPP_ID      @"wx5de5e1ca72fcd5b7"
+#define WXAPP_SECRET  @"d335924636cacefd1e7fec0b9ecaacb3"
+
