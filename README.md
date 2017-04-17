@@ -36,32 +36,26 @@
 
 #define U_Def [NSUserDefaults standardUserDefaults]
 
-// Object
 #define SetObjcForKey(objc, key) [U_Def setObject:objc forKey:key];\
 [U_Def synchronize]
 #define GetObjcForKey(key) [U_Def objectForKey:key]
 
-// Bool
 #define SetBoolForKey(bool, key) [U_Def setBool:bool forKey:key];\
 [U_Def synchronize]
 #define GetBoolForKey(key) [U_Def boolForKey:key]
 
-// Double
 #define SetDoubleForKey(double, key) [U_Def setDouble:double forKey:key];\
 [U_Def synchronize]
 #define GetDoubleForKey(key) [U_Def doubleForKey:key]
 
-// Float
 #define SetFloatForKey(float, key) [U_Def setFloat:float forKey:key];\
 [U_Def synchronize]
 #define GetFloatForKey(key) [U_Def floatForKey:key]
 
-// Integer
 #define SetIntegerForKey(integer, key) [U_Def setInteger:integer forKey:key];\
 [U_Def synchronize]
 #define GetIntegerForKey(key) [U_Def integerForKey:key]
 
-// URL
 #define SetURLForKey(URLString, key) [U_Def setURL: [NSURL URLWithString: URLString] forKey:key];\
 [U_Def synchronize]
 #define GetURLForKey(key) [U_Def URLForKey:key]
